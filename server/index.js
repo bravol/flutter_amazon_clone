@@ -10,7 +10,7 @@ const app = express();
 
 //middle ware
 //client-server-client
-app.use(express.json());
+app.use(express.json()); //important
 app.use(authRouter);
 
 const DB =
