@@ -20,7 +20,12 @@ class CustomTextField extends StatelessWidget {
           borderSide: BorderSide(color: Colors.black38),
         ),
       ),
-      validator: (value) {},
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return 'Please enter your $hintText';
+        }
+        return null;
+      },
     );
   }
 }

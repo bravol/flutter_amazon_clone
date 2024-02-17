@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-void showSnackBar(BuildContext context, String message) {
+void showSnackBar(BuildContext context, String text) {
   ScaffoldMessenger.of(context).showSnackBar(
     SnackBar(
-      content: Text(message),
+      content: Text(text),
     ),
   );
 }
