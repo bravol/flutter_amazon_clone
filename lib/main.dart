@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_amazon_clone/common/widgets/bottom_bar.dart';
 import 'package:flutter_amazon_clone/constants/global_variables.dart';
 import 'package:flutter_amazon_clone/features/auth/screen/auth_screen.dart';
 import 'package:flutter_amazon_clone/features/auth/services/auth_service.dart';
@@ -46,7 +47,7 @@ class _MyAppState extends State<MyApp> {
       ),
       onGenerateRoute: (settings) => generateRoute(settings),
       home: Provider.of<UserProvider>(context).user.token.isNotEmpty
-          ? const HomeScreen()
+          ? const BottomBar()
           : const AuthScreen(),
     );
   }
