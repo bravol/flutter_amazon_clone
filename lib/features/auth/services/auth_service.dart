@@ -6,7 +6,6 @@ import 'package:flutter_amazon_clone/common/widgets/bottom_bar.dart';
 import 'package:flutter_amazon_clone/constants/error_handling.dart';
 import 'package:flutter_amazon_clone/constants/global_variables.dart';
 import 'package:flutter_amazon_clone/constants/utils.dart';
-import 'package:flutter_amazon_clone/features/home/screens/home_screen.dart';
 import 'package:flutter_amazon_clone/models/user_model.dart';
 import 'package:flutter_amazon_clone/providers/user_provider.dart';
 import 'package:http/http.dart' as http;
