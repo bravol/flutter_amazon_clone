@@ -160,6 +160,7 @@ class _AddProductState extends State<AddProduct> {
                   hintText: 'Quanity',
                 ),
                 //DROP DOWN MENU FOR CATEGORIES
+                const SizedBox(height: 10),
                 SizedBox(
                   width: double.infinity,
                   child: DropdownButton(
@@ -174,9 +175,7 @@ class _AddProductState extends State<AddProduct> {
                         });
                       }),
                 ),
-                const SizedBox(
-                  height: 10,
-                ),
+                const SizedBox(height: 30),
                 CustomButton(text: 'Sell', onPressed: () {})
               ],
             ),
