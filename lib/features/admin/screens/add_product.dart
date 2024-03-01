@@ -6,6 +6,7 @@ import 'package:flutter_amazon_clone/common/widgets/custom_button.dart';
 import 'package:flutter_amazon_clone/common/widgets/custom_text_field.dart';
 import 'package:flutter_amazon_clone/constants/global_variables.dart';
 import 'package:flutter_amazon_clone/constants/utils.dart';
+import 'package:flutter_amazon_clone/features/admin/services/admin_service.dart';
 
 class AddProduct extends StatefulWidget {
   static const String routeName = '/add-product';
@@ -21,6 +22,10 @@ class _AddProductState extends State<AddProduct> {
   final TextEditingController descriptionController = TextEditingController();
   final TextEditingController priceController = TextEditingController();
   final TextEditingController quantityController = TextEditingController();
+  final _addProductFormKey = GlobalKey<FormState>();
+  //_addProductFormKey it helps in validate function
+
+  final AdminServices adminServices = AdminServices();
 
   //list of product categories
   List<String> productCategories = [
@@ -40,6 +45,20 @@ class _AddProductState extends State<AddProduct> {
     setState(() {
       images = res;
     });
+  }
+
+  void sellProduct() {
+    if (_addProductFormKey.currentState!.validate() && images.isNotEmpty) {
+      adminServices.sellProduct(
+        context: context,
+        name: productNameController.text,
+        description: descriptionController.text,
+        price: double.parse(priceController.text),
+        quantity: double.parse(quantityController.text),
+        category: category,
+        images: images,
+      );
+    }
   }
 
   @override
@@ -79,6 +98,7 @@ class _AddProductState extends State<AddProduct> {
       ),
       body: SingleChildScrollView(
         child: Form(
+          key: _addProductFormKey,
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
             child: Column(
@@ -176,7 +196,7 @@ class _AddProductState extends State<AddProduct> {
                       }),
                 ),
                 const SizedBox(height: 30),
-                CustomButton(text: 'Sell', onPressed: () {})
+                CustomButton(text: 'Sell', onPressed: sellProduct)
               ],
             ),
           ),

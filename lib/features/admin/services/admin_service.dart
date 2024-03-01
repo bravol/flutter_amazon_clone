@@ -1,5 +1,6 @@
 // ignore_for_file: use_build_context_synchronously
 
+import 'dart:convert';
 import 'dart:io';
 import 'package:cloudinary_public/cloudinary_public.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +28,8 @@ class AdminServices {
       List<String> imageUrls = [];
       for (int i = 0; i < images.length; i++) {
         CloudinaryResponse res = await cloudinary.uploadFile(
-          CloudinaryFile.fromFile(images[i].path, folder: name),
+          CloudinaryFile.fromFile(images[i].path,
+              folder: 'flutter_amazon_clone/$name'),
         );
         imageUrls.add(res.secureUrl);
       }
@@ -62,4 +64,43 @@ class AdminServices {
       showSnackBar(context, e.toString());
     }
   }
+
+  //get all the products.
+
+  Future<List<Product>> fetchAllProducts(BuildContext context) async {
+    List<Product> productList = [];
+    try {
+      final userProvider = Provider.of<UserProvider>(context, listen: false);
+      http.Response response =
+          await http.get(Uri.parse('$hostUrl/admin/get-products'), headers: {
+        'Content-Type': 'application/json; charset=UTF-8',
+        'x-auth-token': userProvider.user.token,
+      });
+      //list format jsonDecode
+      //string formart jsonEncode
+      httpErrorHandle(
+          response: response,
+          context: context,
+          onSuccess: () {
+            for (int i = 0; i < jsonDecode(response.body).length; i++) {
+              productList.add(
+                Product.fromJson(
+                  jsonEncode(
+                    jsonDecode(response.body)[i],
+                  ),
+                ),
+              );
+            }
+          });
+    } catch (e) {
+      showSnackBar(context, e.toString());
+    }
+    return productList;
+  }
+
+  //delete product
+  void deleteProduct(
+      {required BuildContext context,
+      required Product product,
+      required VoidCallback onSuccess}) async {}
 }
