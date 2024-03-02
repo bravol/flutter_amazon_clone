@@ -16,7 +16,7 @@ adminRouter.post("/admin/add-product", admin, async (req, res) => {
       images: images,
       quantity: quantity,
       price: price,
-      category: quantity,
+      category: category,
     });
     //save in database
     product = await product.save();
@@ -43,7 +43,6 @@ adminRouter.delete("/admin/delete-product", admin, async (req, res) => {
   try {
     const { id } = req.body;
     let product = await Product.findByIdAndDelete(id);
-    product = await product.save();
     res.json(product);
   } catch (error) {
     res.status(500).json({ error: e.message });

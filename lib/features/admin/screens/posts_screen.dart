@@ -21,15 +21,26 @@ class _PostsScreenState extends State<PostsScreen> {
 
   final AdminServices adminServices = AdminServices();
 
+  //async does not work in init state
+  @override
+  void initState() {
+    super.initState();
+    fetchAllProducts();
+  }
+
   fetchAllProducts() async {
     products = await adminServices.fetchAllProducts(context);
     setState(() {});
   }
 
-  @override
-  void initState() {
-    super.initState();
-    fetchAllProducts();
+  void deleteProduct(Product product, int index) {
+    adminServices.deleteProduct(
+        context: context,
+        product: product,
+        onSuccess: () {
+          products!.removeAt(index);
+          setState(() {});
+        });
   }
 
   @override
@@ -61,7 +72,8 @@ class _PostsScreenState extends State<PostsScreen> {
                               ),
                             ),
                             IconButton(
-                                onPressed: () {},
+                                onPressed: () =>
+                                    deleteProduct(productData, index),
                                 icon: const Icon(Icons.delete_outline))
                           ],
                         ),

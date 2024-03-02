@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 //IMPORT OTHER FILES
 const authRouter = require("./routes/auth");
 const adminRouter = require("./routes/admin");
+const productRouter = require("./routes/product");
 
 const PORT = 3001;
 const app = express();
@@ -14,6 +15,8 @@ const app = express();
 app.use(express.json()); //important
 app.use(authRouter);
 app.use(adminRouter);
+app.use(adminRouter);
+app.use(productRouter);
 
 const DB =
   "mongodb+srv://bravol:test12345@cluster0.nsxzpo3.mongodb.net/?retryWrites=true&w=majority";
