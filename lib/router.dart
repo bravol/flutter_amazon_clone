@@ -4,7 +4,7 @@ import 'package:flutter_amazon_clone/features/admin/screens/add_product.dart';
 import 'package:flutter_amazon_clone/features/auth/screen/auth_screen.dart';
 import 'package:flutter_amazon_clone/features/home/screens/category_screen.dart';
 import 'package:flutter_amazon_clone/features/home/screens/home_screen.dart';
-import 'package:flutter_amazon_clone/features/product_details/screens/product_screen.dart';
+import 'package:flutter_amazon_clone/features/product_details/screens/product_details_screen.dart';
 import 'package:flutter_amazon_clone/features/search/screen/search_screen.dart';
 import 'package:flutter_amazon_clone/models/product.dart';
 

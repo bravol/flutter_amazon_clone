@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_amazon_clone/common/widgets/loader.dart';
 import 'package:flutter_amazon_clone/constants/global_variables.dart';
 import 'package:flutter_amazon_clone/features/home/widgets/address_box.dart';
-import 'package:flutter_amazon_clone/features/product_details/screens/product_screen.dart';
+import 'package:flutter_amazon_clone/features/product_details/screens/product_details_screen.dart';
 import 'package:flutter_amazon_clone/features/search/services/search_services.dart';
 import 'package:flutter_amazon_clone/features/search/widget/searched_product.dart';
 import 'package:flutter_amazon_clone/models/product.dart';
