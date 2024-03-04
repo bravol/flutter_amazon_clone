@@ -5,6 +5,7 @@ import 'package:flutter_amazon_clone/common/widgets/stars.dart';
 import 'package:flutter_amazon_clone/constants/global_variables.dart';
 import 'package:flutter_amazon_clone/features/search/screen/search_screen.dart';
 import 'package:flutter_amazon_clone/models/product.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 class ProductDetailScreen extends StatefulWidget {
   static const String routeName = '/product-details';
@@ -220,7 +221,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
               child: CustomButton(
                 text: 'Add to Cart',
                 onPressed: () {},
-                // color: const Color.fromRGBO(254, 216, 19, 1),
+                color: const Color.fromRGBO(254, 216, 19, 1),
               ),
             ),
             const SizedBox(height: 10),
@@ -238,25 +239,18 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                 ),
               ),
             ),
-            // RatingBar.builder(
-            //   initialRating: 4,
-            //   minRating: 1,
-            //   direction: Axis.horizontal,
-            //   allowHalfRating: true,
-            //   itemCount: 5,
-            //   itemPadding: const EdgeInsets.symmetric(horizontal: 4),
-            //   itemBuilder: (context, _) => const Icon(
-            //     Icons.star,
-            //     color: GlobalVariables.secondaryColor,
-            //   ),
-            //   // onRatingUpdate: (rating) {
-            //   //   productDetailsServices.rateProduct(
-            //   //     context: context,
-            //   //     product: widget.product,
-            //   //     rating: rating,
-            //   //   );
-            //   // },
-            // )
+            RatingBar.builder(
+                initialRating: 0,
+                minRating: 1,
+                direction: Axis.horizontal,
+                allowHalfRating: true,
+                itemCount: 5,
+                itemPadding: const EdgeInsets.symmetric(horizontal: 4),
+                itemBuilder: (context, _) => const Icon(
+                      Icons.star,
+                      color: GlobalVariables.secondaryColor,
+                    ),
+                onRatingUpdate: (rating) {})
           ],
         ),
       ),
