@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_amazon_clone/common/widgets/stars.dart';
 import 'package:flutter_amazon_clone/models/product.dart';
 
 class SearchedProduct extends StatelessWidget {
@@ -45,13 +46,13 @@ class SearchedProduct extends StatelessWidget {
                       maxLines: 2,
                     ),
                   ),
-                  // Container(
-                  //   width: 235,
-                  //   padding: const EdgeInsets.only(left: 10, top: 5),
-                  //   child: Stars(
-                  //     rating: avgRating,
-                  //   ),
-                  // ),
+                  Container(
+                    width: 235,
+                    padding: const EdgeInsets.only(left: 10, top: 5),
+                    child: const Stars(
+                      rating: 4,
+                    ),
+                  ),
                   Container(
                     width: 235,
                     padding: const EdgeInsets.only(left: 10, top: 5),
