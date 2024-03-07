@@ -1,6 +1,7 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_amazon_clone/common/widgets/bottom_bar.dart';
 import 'package:flutter_amazon_clone/constants/error_handling.dart';
@@ -21,7 +22,7 @@ class AuthService {
       required String name,
       required BuildContext context}) async {
     try {
-      UserModel user = UserModel(
+      User user = User(
         name: name,
         email: email,
         password: password,
@@ -29,6 +30,7 @@ class AuthService {
         type: '',
         token: '',
         id: '',
+        cart: [],
       );
 
       http.Response res = await http.post(

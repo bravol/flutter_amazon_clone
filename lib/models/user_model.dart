@@ -1,99 +1,79 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
-class UserModel {
+class User {
+  final String id;
   final String name;
   final String email;
   final String password;
   final String address;
   final String type;
   final String token;
-  final String id;
-  UserModel({
+  final List<dynamic> cart;
+
+  User({
+    required this.id,
     required this.name,
     required this.email,
     required this.password,
     required this.address,
     required this.type,
     required this.token,
-    required this.id,
+    required this.cart,
   });
 
-  UserModel copyWith({
-    String? name,
-    String? email,
-    String? password,
-    String? address,
-    String? type,
-    String? token,
-    String? id,
-  }) {
-    return UserModel(
-      name: name ?? this.name,
-      email: email ?? this.email,
-      password: password ?? this.password,
-      address: address ?? this.address,
-      type: type ?? this.type,
-      token: token ?? this.token,
-      id: id ?? this.id,
-    );
-  }
-
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
+    return {
+      'id': id,
       'name': name,
       'email': email,
       'password': password,
       'address': address,
       'type': type,
       'token': token,
-      'id': id,
+      'cart': cart,
     };
   }
 
-  factory UserModel.fromMap(Map<String, dynamic> map) {
-    return UserModel(
+  factory User.fromMap(Map<String, dynamic> map) {
+    return User(
+      id: map['_id'] ?? '',
       name: map['name'] ?? '',
       email: map['email'] ?? '',
       password: map['password'] ?? '',
       address: map['address'] ?? '',
       type: map['type'] ?? '',
       token: map['token'] ?? '',
-      id: map['_id'] ?? '',
+      cart: List<Map<String, dynamic>>.from(
+        map['cart']?.map(
+          (x) => Map<String, dynamic>.from(x),
+        ),
+      ),
     );
   }
 
   String toJson() => json.encode(toMap());
 
-  factory UserModel.fromJson(String source) =>
-      UserModel.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory User.fromJson(String source) => User.fromMap(json.decode(source));
 
-  @override
-  String toString() {
-    return 'UserModel(name: $name, email: $email, password: $password, address: $address, type: $type, token: $token, id: $id)';
-  }
-
-  @override
-  bool operator ==(covariant UserModel other) {
-    if (identical(this, other)) return true;
-
-    return other.name == name &&
-        other.email == email &&
-        other.password == password &&
-        other.address == address &&
-        other.type == type &&
-        other.token == token &&
-        other.id == id;
-  }
-
-  @override
-  int get hashCode {
-    return name.hashCode ^
-        email.hashCode ^
-        password.hashCode ^
-        address.hashCode ^
-        type.hashCode ^
-        token.hashCode ^
-        id.hashCode;
+  User copyWith({
+    String? id,
+    String? name,
+    String? email,
+    String? password,
+    String? address,
+    String? type,
+    String? token,
+    List<dynamic>? cart,
+  }) {
+    return User(
+      id: id ?? this.id,
+      name: name ?? this.name,
+      email: email ?? this.email,
+      password: password ?? this.password,
+      address: address ?? this.address,
+      type: type ?? this.type,
+      token: token ?? this.token,
+      cart: cart ?? this.cart,
+    );
   }
 }

@@ -7,11 +7,13 @@ import 'package:flutter_amazon_clone/constants/error_handling.dart';
 import 'package:flutter_amazon_clone/constants/global_variables.dart';
 import 'package:flutter_amazon_clone/constants/utils.dart';
 import 'package:flutter_amazon_clone/models/product.dart';
+import 'package:flutter_amazon_clone/models/user_model.dart';
 import 'package:flutter_amazon_clone/providers/user_provider.dart';
-import 'package:provider/provider.dart';
 import 'package:http/http.dart' as http;
+import 'package:provider/provider.dart';
 
 class ProductDetailsServices {
+  // adding to cart
   void addToCart({
     required BuildContext context,
     required Product product,
@@ -33,7 +35,14 @@ class ProductDetailsServices {
       httpErrorHandle(
         response: res,
         context: context,
-        onSuccess: () {},
+        onSuccess: () {
+          //updating the cart of the logged in user
+          User user =
+              userProvider.user.copyWith(cart: jsonDecode(res.body)['cart']);
+
+          //updating the ful user along with cart
+          userProvider.setUserFromModel(user);
+        },
       );
     } catch (e) {
       showSnackBar(context, e.toString());
