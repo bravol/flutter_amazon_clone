@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_amazon_clone/constants/global_variables.dart';
 import 'package:flutter_amazon_clone/features/home/widgets/address_box.dart';
 import 'package:flutter_amazon_clone/features/home/widgets/carousel_slider.dart';
 import 'package:flutter_amazon_clone/features/home/widgets/deal_of_the_day.dart';
 import 'package:flutter_amazon_clone/features/home/widgets/top_categories.dart';
-
-import 'package:flutter_amazon_clone/constants/global_variables.dart';
 import 'package:flutter_amazon_clone/features/search/screen/search_screen.dart';
 
 class HomeScreen extends StatefulWidget {

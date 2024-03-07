@@ -26,6 +26,12 @@ class _DealOfTheDayState extends State<DealOfTheDay> {
   }
 
   @override
+  void initState() {
+    super.initState();
+    fetchDealOfDay();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return product == null
         ? const Loader()

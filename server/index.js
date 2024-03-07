@@ -6,6 +6,7 @@ const mongoose = require("mongoose");
 const authRouter = require("./routes/auth");
 const adminRouter = require("./routes/admin");
 const productRouter = require("./routes/product");
+const userRouter = require("./routes/user");
 
 const PORT = 3001;
 const app = express();
@@ -17,6 +18,7 @@ app.use(authRouter);
 app.use(adminRouter);
 app.use(adminRouter);
 app.use(productRouter);
+app.use(userRouter);
 
 const DB =
   "mongodb+srv://bravol:test12345@cluster0.nsxzpo3.mongodb.net/?retryWrites=true&w=majority";
